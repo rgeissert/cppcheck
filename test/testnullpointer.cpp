@@ -297,6 +297,16 @@ private:
               "        ;\n"
               "}\n");
         ASSERT_EQUALS("", errout.str());
+
+        // ?: conditional
+        check("void foo()\n"
+              "{\n"
+              "    int *a = abc();\n"
+              "    a = (a->next == last())? NULL : a->next;\n"
+              "    if (!a)\n"
+              "        return;\n"
+              "}\n");
+        TODO_ASSERT_EQUALS("", errout.str());
     }
 
     // Dereferencing a pointer and then checking if it is null
